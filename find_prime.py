@@ -5,6 +5,8 @@ def find_prime_number(number):
         # check if value is negative
         if number < 0:
             raise ValueError("input should be a positive number")
+        elif number == 0:
+            raise ValueError("input should be greater than 0")
         else:
             for num in range(0, number + 1):
                 # prime numbers should be greater than 1
