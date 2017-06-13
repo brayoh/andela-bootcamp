@@ -1,24 +1,34 @@
-import unittest
-from find_prime import find_prime_number
+import time
 
-class TestGetPrimeNumbers(unittest.TestCase):
+def find_prime_number(number):
+    start = time.time() # mark the start of our algorithm to measure time complexity
+    prime_numbers = []
+    # check if the given input is an integer
+    if isinstance(number, int):
+        # check if value is negative
+        if number < 0:
+            raise ValueError("input should be a positive number")
+        elif number == 0:
+            raise ValueError("input should be greater than 0")
+        else:
+            for num in range(0, number + 1):
+                # prime numbers should be greater than 1
+                if num > 1:
+                    for i in range(2, num):
+                        if num % i == 0:
+                            break # skip optional else
+                    else:
+                        prime_numbers.append(num) # append the prime number to our list
 
-    def test_returns_correct_output(self):
-        result = find_prime_number(11)
-        self.assertEquals(result, [2, 3, 5, 7, 11])
+            end = time.time()
+            
+            print("find_prime_number took {} to execute".format((end - start)))
 
-    def test_returns_error_if_number_is_zero(self):
-        with self.assertRaises(ValueError):
-            find_prime_number(0)
+            return prime_numbers
 
-    def test_returns_error_if_number_is_negative(self):
-        with self.assertRaises(ValueError):
-            find_prime_number(-1)
+    else:
+        raise TypeError("input should be of type integer")
 
-    def test_it_should_accept_integers_only(self):
-        with self.assertRaises(TypeError):
-            find_prime_number("String")
+    end = time.time()
 
-    def test_it_accepts_whole_numbers_only(self):
-        with self.assertRaises(TypeError):
-            find_prime_number(1.5)
+    print(end - start, "this is the time taken to execute")
