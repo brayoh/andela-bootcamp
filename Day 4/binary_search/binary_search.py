@@ -49,8 +49,8 @@ class BinarySearch(object):
                 found = True
                 result['index'] = mid
             else:
-            	if number < numbers[mid]:
+            	if number < numbers[mid]: # lower half
             		last_index = mid - 1
-            	else:
+            	else:  # upper half
             		first_index = mid + 1
         return result
