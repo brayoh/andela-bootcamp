@@ -1,30 +1,26 @@
 class Country(object):
-
     """ encapsulation """
-
     __malaria_infected_people = 0
 
     def __init__(self, name, region, official_language):
-
         self.name = name
-
         self.region = region
-
-        self.official_language = official_language
-
+        self._official_language = official_language
 
     def citizen_description(self):
-        print ("Hi I'm from %s and %s is my Country" % (self.region, self.name))
+        print("Hi I'm from %s and %s is my Country" % (self.region, self.name))
 
-    def official_language (self):
-      print ("%s is our official language" %self.official_language)
-
+    def official_language(self):
+        print("%s is our official language" % self._official_language)
 
     def citizen_opinion(self):
         print("{} is an awesome place to be".format(self.name))
 
-    def set_infected_chilren(self, num):
+    def set_infected_children(self, num):
         self.__malaria_infected_people = num
+
+    def get_infected_children(self):
+        return self.__malaria_infected_people
 
 
  # inherit Country
